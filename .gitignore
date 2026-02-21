@@ -1,0 +1,11 @@
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vs/
+*.sln
+*.xcodeproj
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.users
+*.code-workspace
