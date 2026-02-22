@@ -7,10 +7,15 @@
 #include "Interface/SimpleInputInterface.h"
 #include "FPSPlayer.generated.h"
 
+class USimplePlayerItemInterComponent;
 UCLASS(config=Game)
 class QUANTUMBATTLE_API AFPSPlayer : public AFPSCharacterBase, public ISimpleInputInterface
 {
 	GENERATED_BODY()
+
+protected:
+	UPROPERTY()
+	TWeakObjectPtr<USimplePlayerItemInterComponent> InteractionComponent;
 
 public:
 	// Sets default values for this character's properties
