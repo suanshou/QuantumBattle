@@ -4,6 +4,11 @@
 #include "FPSCharacterBase.h"
 
 
+USkeletalMeshComponent* AFPSCharacterBase::GetCharacterMesh_Implementation()
+{
+	return GetMesh();
+}
+
 // Sets default values
 AFPSCharacterBase::AFPSCharacterBase()
 {

@@ -69,6 +69,13 @@ protected:
 	void OnInteractingItemTriggerEnd(ASimpleItemActorBase* InInteractingItem, bool bIsPutPack);
 
 public:
+	UFUNCTION(NetMulticast, Unreliable,BlueprintCallable,Category="ItemInteractionComponent")
+	void PlayMontageNetMulticast(
+		UAnimMontage* InMontage,
+		float InPlayRate = 1.f,
+		FName StartSelectionName = NAME_None);
+	
+public:
 	//网络同步支持，方便在之后和GAS联动
 	void ServerTriggerItem(ASimpleItemActorBase* NewTriggerItem, bool bForceInHand = false);
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;

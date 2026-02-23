@@ -4,13 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "SimpleModularCharacter.h"
+#include "Interface/SimpleItemInteractionInterface.h"
 #include "FPSCharacterBase.generated.h"
 
 //只管攻击，伤害和接受伤害
 UCLASS(config=Game)
-class QUANTUMBATTLE_API AFPSCharacterBase : public ASimpleModularCharacter
+class QUANTUMBATTLE_API AFPSCharacterBase : public ASimpleModularCharacter, public ISimpleItemInteractionInterface
 {
 	GENERATED_BODY()
+
+public:
+	virtual USkeletalMeshComponent* GetCharacterMesh_Implementation() override;
 
 public:
 	// Sets default values for this character's properties

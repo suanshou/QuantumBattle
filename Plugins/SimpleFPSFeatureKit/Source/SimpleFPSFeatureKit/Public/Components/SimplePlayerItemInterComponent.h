@@ -53,10 +53,11 @@ public:
 
 public:
 	virtual void Trigger(const FInputActionValue& Value);
-	//@TODO：丢掉的输入需要按下启动，松开丢出，同时需要取消的逻辑
+	//@TODO:丢掉的输入需要按下启动，松开丢出，同时需要取消的逻辑
 	virtual void Throw(const FInputActionValue& Value);
 
 public:
+	//@TODO:在找到最近物体后需要材质边缘高亮
 	void CheckItemAroundPlayer();
 
 protected:
