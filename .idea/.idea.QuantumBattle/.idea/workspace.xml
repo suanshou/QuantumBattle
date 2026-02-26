@@ -13,29 +13,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d89771d2-3645-4885-8625-697e4757476c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Core/SimpleItemActorPickable.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Inventory/SimpleItemActorInventory.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/ItemDefinition/SimpleItemDefinition.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/ItemDefinition/SimpleItemPickableDefinition.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Interface/SimpleItemInteractionInterface.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/SimpleFPSFeatureKitType.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Core/SimpleItemActorPickable.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Inventory/SimpleItemActorInventory.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/ItemDefinition/SimpleItemDefinition.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/ItemDefinition/SimpleItemPickableDefinition.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Interface/SimpleItemInteractionInterface.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/SimpleFPSFeatureKitType.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Weapons/SimpleItemActorWeapon.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Weapons/SimpleWeaponInstance.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Weapons/SimpleItemActorWeapon.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Weapons/SimpleWeaponInstance.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuantumBattle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuantumBattle/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/GameFeatures/SimpleFPSCore/Content/BP_SimplePlayerItemInterComponent.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/GameFeatures/SimpleFPSCore/Content/BP_SimplePlayerItemInterComponent.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Config/DefaultSimpleFPSFeatureKit.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Config/DefaultSimpleFPSFeatureKit.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Core/SimpleItemActorBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Core/SimpleItemActorBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Components/SimpleItemInterComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Components/SimpleItemInterComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Components/SimplePlayerItemInterComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Components/SimplePlayerItemInterComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Core/SimpleItemActorBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Core/SimpleItemActorBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Components/SimpleItemInterComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Components/SimpleItemInterComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Components/SimplePlayerItemInterComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Components/SimplePlayerItemInterComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/QuantumBattle/Framework/Character/Core/FPSCharacterBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/QuantumBattle/Framework/Character/Core/FPSCharacterBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/QuantumBattle/Framework/Character/Core/FPSCharacterBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/QuantumBattle/Framework/Character/Core/FPSCharacterBase.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +33,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/Core/Public/UObject/WeakObjectPtrTemplates.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/Engine/Classes/Animation/AnimMontage.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
@@ -195,6 +176,7 @@
       <workItem from="1771746892089" duration="4161000" />
       <workItem from="1771805294955" duration="467000" />
       <workItem from="1771805796505" duration="22717000" />
+      <workItem from="1772103882486" duration="4254000" />
     </task>
     <servers />
   </component>
