@@ -27,3 +27,13 @@ enum class ESimpleItemInventoryType : uint8
 	ITEM_SUPPLY UMETA(DisplayName = "Supply"),
 	ITEM_INVALID UMETA(DisplayName = "Invalid", Hidden),
 };
+
+UENUM(BlueprintType)
+enum class ESimpleWeaponSlot : uint8
+{
+	WS_PISTOL = 0 UMETA(DisplayName = "Pistol"),
+	WS_RIFLE = 1 UMETA(DisplayName = "Rifle"),
+	WS_SMG = 2 UMETA(DisplayName = "Smg"),
+	WS_SNIPPER = 3 UMETA(DisplayName = "Snipper"),
+	WS_INVALID = 255 UMETA(DisplayName = "Invalid", Hidden),
+};

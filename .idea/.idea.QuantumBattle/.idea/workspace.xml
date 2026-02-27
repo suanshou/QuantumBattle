@@ -13,11 +13,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d89771d2-3645-4885-8625-697e4757476c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Weapons/SimpleItemActorWeapon.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Weapons/SimpleWeaponInstance.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Weapons/SimpleItemActorWeapon.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Weapons/SimpleWeaponInstance.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuantumBattle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuantumBattle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Weapons/SimpleWeaponInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Weapons/SimpleWeaponInstance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Weapons/SimpleWeaponInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Weapons/SimpleWeaponInstance.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/SimpleFPSFeatureKitType.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/SimpleFPSFeatureKitType.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/SimpleFPSFeatureKit.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/SimpleFPSFeatureKit.Build.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +31,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/Core/Public/UObject/WeakObjectPtrTemplates.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/CoreUObject/Private/UObject/Obj.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/CoreUObject/Public/UObject/Object.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/Engine/Classes/Animation/AnimMontage.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/Engine/Private/Components/ActorComponent.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/GameplayTags/Classes/GameplayTagContainer.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -177,6 +178,7 @@
       <workItem from="1771805294955" duration="467000" />
       <workItem from="1771805796505" duration="22717000" />
       <workItem from="1772103882486" duration="4254000" />
+      <workItem from="1772152466205" duration="14978000" />
     </task>
     <servers />
   </component>
