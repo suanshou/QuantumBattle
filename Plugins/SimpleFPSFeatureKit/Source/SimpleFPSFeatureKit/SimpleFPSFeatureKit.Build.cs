@@ -40,7 +40,9 @@ public class SimpleFPSFeatureKit : ModuleRules
 				"SlateCore",
 				"EnhancedInput",
 				"GameplayAbilities",
-				"GameplayTags"
+				"GameplayTags",
+				"GameplayTasks",
+				"NetCore",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

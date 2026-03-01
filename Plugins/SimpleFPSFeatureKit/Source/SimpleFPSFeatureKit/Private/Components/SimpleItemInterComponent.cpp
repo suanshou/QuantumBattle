@@ -15,8 +15,7 @@ USimpleItemInterComponent::USimpleItemInterComponent(const FObjectInitializer& O
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
 
-	//支持网络同步
-	SetIsReplicated(true);
+
 }
 
 
@@ -26,7 +25,8 @@ void USimpleItemInterComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	
+		//支持网络同步
+	SetIsReplicated(true);
 }
 
 

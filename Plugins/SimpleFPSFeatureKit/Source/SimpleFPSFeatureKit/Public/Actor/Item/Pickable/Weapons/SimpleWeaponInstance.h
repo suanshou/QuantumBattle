@@ -130,13 +130,13 @@ protected:
 
 	//散射角度倍率
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Weapon Instance Defaults|Spread|Fire Params")
-	float SpreadAngleMultiplier_Aiming = 1.f;
-
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Weapon Instance Defaults|Spread|Fire Params")
 	float SpreadAngleMultiplier_StandingStill = 1.f;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Weapon Instance Defaults|Spread|Fire Params")
 	float SpreadAngleMultiplier_Crouching = 1.f;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Weapon Instance Defaults|Spread|Fire Params")
+	float SpreadAngleMultiplier_Aiming = 1.f;
 
 	//从移动到静止的散射平滑
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Weapon Instance Defaults|Spread|Fire Params")
@@ -241,7 +241,7 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Weapon Animation")
 	void SetAnimationParamOnUnequipped(UObject* InInstigator);
 
-	inline float ClampFloat(float NewHeat)
+	inline float ClampHeat(float NewHeat)
 	{
 		float MinHeat;
 		float MaxHeat;
@@ -250,7 +250,9 @@ public:
 		return FMath::Clamp(NewHeat, MinHeat, MaxHeat);
 	}
 
+	//每帧更新子弹散射
 	bool UpdateSpread(float DeltaSeconds);
+	//每帧更新散射倍率
 	bool UpdateMultipliers(float DeltaSeconds);
 
 public:

@@ -37,6 +37,14 @@
 		{
 			"Name": "SimpleInputExpand",
 			"Enabled": true
+		},
+		{
+			"Name": "SimpleFPSFeatureKit",
+			"Enabled": true
+		},
+		{
+			"Name": "EnhancedInput",
+			"Enabled": true
 		}
 	]
 }

@@ -12,12 +12,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d89771d2-3645-4885-8625-697e4757476c" name="Changes" comment="">
+    <list default="true" id="6c5b2485-86b2-4d58-832e-f328826246ed" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Components/SimpleInvMgrComponent.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Components/SimpleInvMgrComponent.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuantumBattle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuantumBattle/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FPS/Blueprints/BP_FPSPlayer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FPS/Blueprints/BP_FPSPlayer.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/SimpleFPSFeatureKit.uplugin" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/SimpleFPSFeatureKit.uplugin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Weapons/SimpleWeaponInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Weapons/SimpleWeaponInstance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Components/SimpleItemInterComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Components/SimpleItemInterComponent.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Weapons/SimpleWeaponInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Weapons/SimpleWeaponInstance.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/SimpleFPSFeatureKitType.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/SimpleFPSFeatureKitType.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/SimpleFPSFeatureKit.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/SimpleFPSFeatureKit.Build.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuantumBattle.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/QuantumBattle.uproject" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,19 +37,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/Core/Public/UObject/WeakObjectPtrTemplates.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/CoreUObject/Private/UObject/Obj.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/CoreUObject/Public/UObject/Object.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/Engine/Classes/Animation/AnimMontage.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/Engine/Classes/GameFramework/Actor.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/Engine/Private/Components/ActorComponent.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/GameplayTags/Classes/GameplayTagContainer.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="cidr-memory-view://0" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../UE_5.6/Engine/Source/Runtime/Net/Core/Classes/Net/Serialization/FastArraySerializer.h" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 5
-}</component>
-  <component name="ProjectId" id="39z7FrcNurCtLaAUjo0VEy1HOQp" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="3AKZxJyDOjoTFAyVIYLxiY7W8kx" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -51,20 +52,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;C/C++ Project.QuantumBattle.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "C/C++ Project.QuantumBattle.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C/C++ Project.QuantumBattle">
     <configuration name="QuantumBattle" type="CppProject" factoryName="C++ Project">
       <configuration_1 setup="1">
@@ -157,28 +158,19 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile">
-        <settings />
-      </deployment>
-      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <deployment type="dockerfile" />
       <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d89771d2-3645-4885-8625-697e4757476c" name="Changes" comment="" />
-      <created>1771686945469</created>
+      <changelist id="6c5b2485-86b2-4d58-832e-f328826246ed" name="Changes" comment="" />
+      <created>1772343469410</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1771686945469</updated>
-      <workItem from="1771686947245" duration="58000" />
-      <workItem from="1771726003457" duration="9095000" />
-      <workItem from="1771746892089" duration="4161000" />
-      <workItem from="1771805294955" duration="467000" />
-      <workItem from="1771805796505" duration="22717000" />
-      <workItem from="1772103882486" duration="4254000" />
-      <workItem from="1772152466205" duration="14978000" />
+      <updated>1772343469410</updated>
+      <workItem from="1772343470558" duration="6917000" />
     </task>
     <servers />
   </component>
