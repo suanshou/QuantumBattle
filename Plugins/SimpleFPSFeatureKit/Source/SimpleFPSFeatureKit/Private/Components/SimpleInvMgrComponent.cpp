@@ -3,6 +3,9 @@
 
 #include "Components/SimpleInvMgrComponent.h"
 
+#include "Components/SimplePlayerItemInterComponent.h"
+#include "Net/UnrealNetwork.h"
+
 
 void FSimpleItemInventoryList::SetInventorySize(const int32& NewInventorySize)
 {
@@ -108,7 +111,7 @@ int32 FSimpleItemInventoryList::RemoveEntry(const TSubclassOf<USimpleItemPickabl
 	int32 RealRemoveCounts = 0;
 	FSimpleItemInventoryEntry* TargetItemEntry = nullptr;
 
-	if (IsRemoveEntry(InItemDefinition,ItemCounts, TargetItemEntry))
+	if (IsRemoveEntry(InItemDefinition, ItemCounts, TargetItemEntry))
 	{
 		TargetItemEntry->ItemCounts -= ItemCounts;
 
@@ -153,6 +156,71 @@ void FSimpleItemInventoryList::PostReplicatedChange(const TArrayView<int32> Chan
 {
 }
 
+USimplePlayerItemInterComponent* USimpleInvMgrComponent::GetItemInteractionComponent()
+{
+	check(GetOwner())
+
+	return GetOwner()->FindComponentByClass<USimplePlayerItemInterComponent>();
+}
+
+bool USimpleInvMgrComponent::GetItemEntry(TSubclassOf<USimpleItemPickableDefinition> ItemDefinition,
+                                          FSimpleItemInventoryEntry& TargetEntry)
+{
+	TargetEntry = FSimpleItemInventoryEntry();
+
+	if (FSimpleItemInventoryEntry* ItemEntry = InventoryList.GetEntry(ItemDefinition))
+	{
+		TargetEntry = *ItemEntry;
+		return true;
+	}
+
+	return false;
+}
+
+bool USimpleInvMgrComponent::IsAddItemToInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition)
+{
+	FSimpleItemInventoryEntry* TempEntry = nullptr;
+	return InventoryList.IsAddEntry(ItemDefinition, TempEntry);
+}
+
+bool USimpleInvMgrComponent::IsRemoveFromInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
+                                                   const int32& ItemCounts)
+{
+	FSimpleItemInventoryEntry* TempEntry = nullptr;
+	return InventoryList.IsRemoveEntry(ItemDefinition, ItemCounts, TempEntry);
+}
+
+int32 USimpleInvMgrComponent::AddItemToInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
+                                                 const int32& ItemCounts)
+{
+	return 0;
+}
+
+int32 USimpleInvMgrComponent::RemoveItemFromInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
+                                                      const int32& ItemCounts)
+{
+	return 0;
+}
+
+void USimpleInvMgrComponent::DiscardItemFrom(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
+                                             const int32& ItemCounts)
+{
+}
+
+void USimpleInvMgrComponent::TakeOutItemFrom(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition)
+{
+}
+
+void USimpleInvMgrComponent::DiscardItemFromInventoryOnServer_Implementation(
+	TSubclassOf<USimpleItemPickableDefinition> ItemDefinition, int32 ItemCounts)
+{
+}
+
+void USimpleInvMgrComponent::TakeOutItemFromInventoryOnServer_Implementation(
+	TSubclassOf<USimpleItemPickableDefinition> ItemDefinition)
+{
+}
+
 // Sets default values for this component's properties
 USimpleInvMgrComponent::USimpleInvMgrComponent()
 {
@@ -167,6 +235,8 @@ USimpleInvMgrComponent::USimpleInvMgrComponent()
 void USimpleInvMgrComponent::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(ThisClass, InventoryList);
 }
 
 

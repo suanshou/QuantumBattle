@@ -8,6 +8,8 @@
 #include "Net/Serialization/FastArraySerializer.h"
 #include "SimpleInvMgrComponent.generated.h"
 
+class USimplePlayerItemInterComponent;
+
 USTRUCT(BlueprintType)
 struct FSimpleItemInventoryEntry : public FFastArraySerializerItem
 {
@@ -25,6 +27,7 @@ inline bool operator==(const FSimpleItemInventoryEntry& SourceEntry, const FSimp
 	return SourceEntry.ItemDefinition == TargetEntry.ItemDefinition && SourceEntry.ItemCounts == TargetEntry.ItemCounts;
 }
 
+//FFastArraySerializer提供了增量同步的机制
 USTRUCT(BlueprintType)
 struct FSimpleItemInventoryList : public FFastArraySerializer
 {
@@ -53,9 +56,9 @@ public:
 
 public:
 	//网络同步相关
-	void PreReplicatedRemove(const TArrayView<int32> RemoveIndices,int32 FinalSize);
-	void PostReplicatedAdd(const TArrayView<int32> AddIndices,int32 FinalSize);
-	void PostReplicatedChange(const TArrayView<int32> ChangeIndices,int32 FinalSize);
+	void PreReplicatedRemove(const TArrayView<int32> RemoveIndices, int32 FinalSize);
+	void PostReplicatedAdd(const TArrayView<int32> AddIndices, int32 FinalSize);
+	void PostReplicatedChange(const TArrayView<int32> ChangeIndices, int32 FinalSize);
 
 private:
 	UPROPERTY(BlueprintReadOnly, Category="Inventory List", meta=(AllowPrivateAccess="true"))
@@ -65,10 +68,67 @@ private:
 	int32 InventorySize = 1;
 };
 
+//模板元编程，加入这个才有增量开发的效果
+template <>
+struct TStructOpsTypeTraits<FSimpleItemInventoryList> : public TStructOpsTypeTraitsBase2<FSimpleItemInventoryList>
+{
+	enum { WithNetDeltaSerializer = true, };
+};
+
 UCLASS(ClassGroup=(Custom), BlueprintType, Blueprintable, meta=(BlueprintSpawnableComponent))
 class SIMPLEFPSFEATUREKIT_API USimpleInvMgrComponent : public UActorComponent
 {
 	GENERATED_BODY()
+
+public:
+	USimplePlayerItemInterComponent* GetItemInteractionComponent();
+
+	//通过公共接口暴露前面的信息
+public:
+	UFUNCTION(BlueprintCallable, BlueprintPure = false, Category="Inventory Manager Component")
+	FSimpleItemInventoryList GetItemInventoryList() { return InventoryList; }
+
+	//通过当前Key获取当前目标
+	UFUNCTION(BlueprintCallable, BlueprintPure = false, Category="Inventory Manager Component")
+	bool GetItemEntry(TSubclassOf<USimpleItemPickableDefinition> ItemDefinition,
+	                  FSimpleItemInventoryEntry& TargetEntry);
+
+	UFUNCTION(BlueprintCallable, Category="Inventory Manager Component")
+	bool IsAddItemToInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition);
+
+	UFUNCTION(BlueprintCallable, Category="Inventory Manager Component")
+	bool IsRemoveFromInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
+	                           const int32& ItemCounts);
+
+	UFUNCTION(BlueprintCallable, Category="Inventory Manager Component")
+	int32 AddItemToInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
+	                         const int32& ItemCounts);
+
+	UFUNCTION(BlueprintCallable, Category="Inventory Manager Component")
+	int32 RemoveItemFromInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
+	                              const int32& ItemCounts);
+
+	//丢弃物品
+	UFUNCTION(BlueprintCallable, Category="Inventory Manager Component")
+	void DiscardItemFrom(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition, const int32& ItemCounts);
+
+	//取出物品
+	UFUNCTION(BlueprintCallable, Category="Inventory Manager Component")
+	void TakeOutItemFrom(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition);
+
+public:
+	//网络同步丢弃和取出物品
+	UFUNCTION(BlueprintCallable, Server, Unreliable, Category="Inventory Manager Component")
+	void DiscardItemFromInventoryOnServer(TSubclassOf<USimpleItemPickableDefinition> ItemDefinition,
+	                                      int32 ItemCounts);
+
+	UFUNCTION(BlueprintCallable, Server, Unreliable, Category="Inventory Manager Component")
+	void TakeOutItemFromInventoryOnServer(TSubclassOf<USimpleItemPickableDefinition> ItemDefinition);
+
+private:
+	//只需要靠这个来同步就可以了
+	UPROPERTY(Replicated)
+	FSimpleItemInventoryList InventoryList;
 
 public:
 	// Sets default values for this component's properties
