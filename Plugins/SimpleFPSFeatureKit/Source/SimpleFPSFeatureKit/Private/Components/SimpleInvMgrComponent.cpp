@@ -3,6 +3,7 @@
 
 #include "Components/SimpleInvMgrComponent.h"
 
+#include "Actor/Item/Pickable/Inventory/SimpleItemActorInventory.h"
 #include "Components/SimplePlayerItemInterComponent.h"
 #include "Net/UnrealNetwork.h"
 
@@ -193,32 +194,99 @@ bool USimpleInvMgrComponent::IsRemoveFromInventory(const TSubclassOf<USimpleItem
 int32 USimpleInvMgrComponent::AddItemToInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
                                                  const int32& ItemCounts)
 {
-	return 0;
+	check(GetOwner() && GetOwner()->HasAuthority())
+
+	return InventoryList.AddEntry(ItemDefinition, ItemCounts);
 }
 
 int32 USimpleInvMgrComponent::RemoveItemFromInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
                                                       const int32& ItemCounts)
 {
-	return 0;
+	check(GetOwner() && GetOwner()->HasAuthority())
+
+	return InventoryList.RemoveEntry(ItemDefinition, ItemCounts);
 }
 
-void USimpleInvMgrComponent::DiscardItemFrom(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
-                                             const int32& ItemCounts)
+void USimpleInvMgrComponent::DiscardItemFromInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
+                                                      const int32& ItemCounts)
 {
+	check(GetOwner() && GetOwner()->HasAuthority() && GetWorld())
+
+	if (ItemDefinition)
+	{
+		const USimpleItemPickableDefinition* TmpItemDef = ItemDefinition.GetDefaultObject();
+		if (TmpItemDef->ItemClass)
+		{
+			if (InventoryList.RemoveEntry(ItemDefinition, ItemCounts))
+			{
+				FTransform SpawnTransform(
+					GetOwner()->GetActorRotation(),
+					GetOwner()->GetActorLocation(),
+					FVector::OneVector);
+
+				FActorSpawnParameters SpawnParameters;
+				SpawnParameters.SpawnCollisionHandlingOverride =
+					ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+
+				//生成物体后更新数据
+				ASimpleItemActorInventory* DiscardItem = GetWorld()->SpawnActor<ASimpleItemActorInventory>(
+					TmpItemDef->ItemClass,
+					SpawnTransform,
+					SpawnParameters);
+
+				if (DiscardItem)
+				{
+					DiscardItem->SetItemCounts(ItemCounts);
+				}
+			}
+		}
+	}
 }
 
-void USimpleInvMgrComponent::TakeOutItemFrom(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition)
+void USimpleInvMgrComponent::TakeOutItemFromInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition)
 {
+	check(GetOwner() && GetOwner()->HasAuthority() && GetWorld())
+
+	if (ItemDefinition)
+	{
+		const USimpleItemPickableDefinition* TmpItemDef = ItemDefinition.GetDefaultObject();
+		USimplePlayerItemInterComponent* IC_Player = GetItemInteractionComponent();
+
+		if (IC_Player && TmpItemDef->bAllowInHand && TmpItemDef->ItemClass)
+		{
+			if (InventoryList.RemoveEntry(ItemDefinition, 1))
+			{
+				FTransform SpawnTransform(
+					GetOwner()->GetActorRotation(),
+					GetOwner()->GetActorLocation(),
+					FVector::OneVector);
+
+				ASimpleItemActorInventory* TakeOutItem = GetWorld()->SpawnActor<ASimpleItemActorInventory>(
+					TmpItemDef->ItemClass,
+					SpawnTransform);
+
+				if (TakeOutItem)
+				{
+					TakeOutItem->SetItemCounts(1);
+
+					//切枪相关的操作也放在这里
+					IC_Player->ServerTriggerItem(TakeOutItem, true);
+				}
+			}
+		}
+	}
 }
 
 void USimpleInvMgrComponent::DiscardItemFromInventoryOnServer_Implementation(
 	TSubclassOf<USimpleItemPickableDefinition> ItemDefinition, int32 ItemCounts)
 {
+	DiscardItemFromInventory(ItemDefinition, ItemCounts);
 }
 
 void USimpleInvMgrComponent::TakeOutItemFromInventoryOnServer_Implementation(
 	TSubclassOf<USimpleItemPickableDefinition> ItemDefinition)
 {
+	TakeOutItemFromInventory(ItemDefinition);
 }
 
 // Sets default values for this component's properties

@@ -110,11 +110,11 @@ public:
 
 	//丢弃物品
 	UFUNCTION(BlueprintCallable, Category="Inventory Manager Component")
-	void DiscardItemFrom(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition, const int32& ItemCounts);
+	void DiscardItemFromInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition, const int32& ItemCounts);
 
 	//取出物品
 	UFUNCTION(BlueprintCallable, Category="Inventory Manager Component")
-	void TakeOutItemFrom(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition);
+	void TakeOutItemFromInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition);
 
 public:
 	//网络同步丢弃和取出物品
