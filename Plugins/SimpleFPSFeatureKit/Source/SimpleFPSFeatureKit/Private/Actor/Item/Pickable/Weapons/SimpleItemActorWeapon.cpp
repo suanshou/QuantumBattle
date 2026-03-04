@@ -7,6 +7,7 @@
 #include "Actor/Item/Pickable/Weapons/SimpleWeaponInstance.h"
 #include "Actor/ItemDefinition/SimpleItemPickableDefinition.h"
 #include "Components/SimpleItemInterComponent.h"
+#include "Components/SimpleWeaponManagerComponent.h"
 #include "Interface/SimpleItemInteractionInterface.h"
 #include "Net/UnrealNetwork.h"
 
@@ -75,15 +76,48 @@ void ASimpleItemActorWeapon::OnStartTrigger_Implementation(USimpleItemInterCompo
 	{
 		return;
 	}
+
+	if (USimpleWeaponManagerComponent* WeaponManager = GetWeaponManager(ItemInterComponent))
+	{
+		if (bForceInHand)
+		{
+			ASimpleItemActorBase::OnStartTrigger(ItemInterComponent, bForceInHand);
+			WeaponManager->EquipWeapon((int32)WeaponInstance->GetWeaponSlot());
+			EquipToHand();
+		}
+		else
+		{
+			ASimpleItemActorBase::OnStartTrigger(ItemInterComponent, bForceInHand);
+			EquipToSlot();
+		}
+	}
 }
 
 void ASimpleItemActorWeapon::OnEndTrigger_Implementation(USimpleItemInterComponent* ItemInterComponent, bool bIsPutPack)
 {
-	Super::OnEndTrigger_Implementation(ItemInterComponent, bIsPutPack);
+	Super::OnStartTrigger_Implementation(ItemInterComponent, bIsPutPack);
 
 	if (WeaponInstance)
 	{
-		
+		if (USimpleWeaponManagerComponent* WeaponManager = GetWeaponManager(ItemInterComponent))
+		{
+			if (bIsPutPack)
+			{
+				if (WeaponManager->GetWeaponInSlot(WeaponManager->GetEquipSlot()) == this && WeaponManager->
+					UnequipWeapon())
+				{
+					EquipToSlot();
+				}
+				else
+				{
+					if (WeaponManager->RemoveWeapon((int32)WeaponInstance->GetWeaponSlot()))
+					{
+						ThrowItem(ItemInterComponent, WeaponMesh, false);
+						Super::OnEndTrigger_Implementation(ItemInterComponent, bIsPutPack);
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -126,6 +160,20 @@ void ASimpleItemActorWeapon::EquipToHand()
 			}
 		}
 	}
+}
+
+USimpleWeaponManagerComponent* ASimpleItemActorWeapon::GetWeaponManager(
+	USimpleItemInterComponent* ItemInteractionComponent) const
+{
+	if (ItemInteractionComponent)
+	{
+		if (ItemInteractionComponent->GetOwner())
+		{
+			return ItemInteractionComponent->GetOwner()->FindComponentByClass<USimpleWeaponManagerComponent>();
+		}
+	}
+
+	return nullptr;
 }
 
 // Called every frame

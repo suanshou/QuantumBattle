@@ -1,5 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-//后续需要一个库存管理类，也就是背包，和这个库存泛化类联动
+//需要一个库存管理类，也就是背包，和这个库存泛化类联动
 
 #pragma once
 

@@ -7,6 +7,7 @@
 #include "SimpleItemActorWeapon.generated.h"
 
 class USimpleWeaponInstance;
+class USimpleWeaponManagerComponent;
 
 UCLASS()
 class SIMPLEFPSFEATUREKIT_API ASimpleItemActorWeapon : public ASimpleItemActorPickable
@@ -39,7 +40,8 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
-	virtual void OnStartTrigger_Implementation(USimpleItemInterComponent* ItemInterComponent, bool bForceInHand) override;
+	virtual void
+	OnStartTrigger_Implementation(USimpleItemInterComponent* ItemInterComponent, bool bForceInHand) override;
 	virtual void OnEndTrigger_Implementation(USimpleItemInterComponent* ItemInterComponent, bool bIsPutPack) override;
 
 	//和蓝图联动
@@ -50,11 +52,14 @@ public:
 	UFUNCTION(BlueprintPure, Category="Weapon")
 	USimpleWeaponInstance* GetWeaponInstance() const { return WeaponInstance; }
 
-	UFUNCTION(BlueprintCallable,Category="Weapon")
+	UFUNCTION(BlueprintCallable, Category="Weapon")
 	void EquipToSlot();
 
-	UFUNCTION(BlueprintCallable,Category="Weapon")
+	UFUNCTION(BlueprintCallable, Category="Weapon")
 	void EquipToHand();
+
+public:
+	USimpleWeaponManagerComponent* GetWeaponManager(USimpleItemInterComponent* ItemInteractionComponent) const;
 
 public:
 	// Called every frame

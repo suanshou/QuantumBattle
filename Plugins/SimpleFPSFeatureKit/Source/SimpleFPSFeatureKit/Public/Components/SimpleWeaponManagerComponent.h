@@ -68,8 +68,8 @@ protected:
 	bool GetWeaponSlot(const ASimpleItemActorWeapon* InWeapon, int32& OutSlot);
 
 	//武器装载和卸载时的触发逻辑
-	bool OnWeaponEquipped(ASimpleItemActorWeapon* EquippedWeapon);
-	bool OnWeaponUnequipped(ASimpleItemActorWeapon* UnequippedWeapon);
+	void OnWeaponEquipped(ASimpleItemActorWeapon* EquippedWeapon);
+	void OnWeaponUnequipped(ASimpleItemActorWeapon* UnequippedWeapon);
 
 public:
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
