@@ -36,7 +36,9 @@ public:
 public:
 	UFUNCTION(BlueprintCallable, Category="ItemInteractionComponent")
 	ASimpleItemActorBase* GetInteractingItem() const;
-	//看源码只要从这两个函数开始看
+	//第一步
+	//客户端执行，或结合第二步和服务器执行
+	//开始交互，例如拾取
 	UFUNCTION(BlueprintCallable, Category="ItemInteractionComponent")
 	void StartTriggerSelectingItem();
 	UFUNCTION(BlueprintCallable, Category="ItemInteractionComponent")
@@ -56,12 +58,15 @@ public:
 	bool IsEndTriggerInteractingItem() const;
 
 protected:
+	//第二步
 	//网络同步
 	//不可靠常用于UDP，方便高频发送信息
 	UFUNCTION(Server, Unreliable)
 	void StartTriggerSelectingItemOnServer(ASimpleItemActorBase* InSelectingItem);
 	UFUNCTION(Server, Unreliable)
 	void EndTriggerInteractingItemOnServer(bool bIsPutPack);
+	//第三步
+	//服务器执行
 	//开始和结束交互
 	UFUNCTION(BlueprintNativeEvent, Category="ItemInteractionComponent")
 	void OnSelectingItemTriggerStart(ASimpleItemActorBase* InSelectingItem, bool bForceInHand);

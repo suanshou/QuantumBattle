@@ -24,8 +24,9 @@ protected:
 
 public:
 	//开始和结束交互
+	//bForceInHand，是否显示在手上
 	UFUNCTION(BlueprintCallable, Category="ItemActorBase")
-	bool StartTrigger(USimpleItemInterComponent* ItemInterComponent, bool bForceInHand);
+	bool StartTrigger(USimpleItemInterComponent* ItemInterComponent, bool bForceInHand = false);
 
 	UFUNCTION(BlueprintCallable, Category="ItemActorBase")
 	bool EndTrigger(USimpleItemInterComponent* ItemInterComponent, bool bIsPutPack);
@@ -42,13 +43,14 @@ public:
 	ESimpleKitItemType GetItemType() const { return ItemType; }
 
 protected:
+	//激活
 	//开始和结束交互的响应事件
 	//BlueprintNativeEvent，不清楚用户用的是蓝图函数还是C++
 	UFUNCTION(BlueprintNativeEvent, Category="ItemActorBase")
 	void OnStartTrigger(USimpleItemInterComponent* ItemInterComponent, bool bForceInHand);
 	
 	UFUNCTION(BlueprintNativeEvent, Category="ItemActorBase")
-	void OnEndTrigger(USimpleItemInterComponent* ItemInterComponent, bool bIsPutPack);
+	 void OnEndTrigger(USimpleItemInterComponent* ItemInterComponent, bool bIsPutPack);
 
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 

@@ -29,19 +29,22 @@ public:
 	UFUNCTION(BlueprintCallable, Category="Weapon Manager Component")
 	ASimpleItemActorWeapon* GetEquippingWeapon() const { return EquippingWeapon.Get(); }
 
+	//武器第二步
+	//在插槽找到对应武器
 	UFUNCTION(BlueprintCallable, Category="Weapon Manager Component")
 	ASimpleItemActorWeapon* GetWeaponInSlot(int32 WeaponSlot);
 
 	UFUNCTION(BlueprintCallable, Category="Weapon Manager Component")
 	int32 GetEquipSlot() const { return EquipSlot; }
 
+	//在没有找到插槽武器位置时，OnStartTrigger后
 	//武器的增删，改和替换
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category="Weapon Manager Component")
 	bool AddWeapon(ASimpleItemActorWeapon* NewWeapon);
 
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category="Weapon Manager Component")
 	bool RemoveWeapon(int32 InRemoveSlot);
-
+	
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category="Weapon Manager Component")
 	bool EquipWeapon(int32 InSlot);
 

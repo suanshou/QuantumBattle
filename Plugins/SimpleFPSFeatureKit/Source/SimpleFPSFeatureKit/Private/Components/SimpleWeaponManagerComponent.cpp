@@ -177,7 +177,7 @@ void USimpleWeaponManagerComponent::OnWeaponEquipped(ASimpleItemActorWeapon* Equ
 						{
 							FGameplayAbilitySpec Spec = FGameplayAbilitySpec(TmpAbility.WeaponAbility, 1);
 							Spec.SourceObject = EquippingWeapon;
-							Spec.DynamicAbilityTags.AddTag(TmpAbility.InputTag);
+							Spec.GetDynamicSpecSourceTags().AddTag(TmpAbility.InputTag);
 
 							WeaponGameAbilities.Add(ASC->GiveAbility(Spec));
 						}

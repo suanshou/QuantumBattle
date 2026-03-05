@@ -1,4 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+//在此处扫描到交互主体
 
 #pragma once
 
@@ -10,6 +11,8 @@
 #include "SimplePlayerItemInterComponent.generated.h"
 
 struct FInputActionValue;
+class ASimpleItemActorWeapon;
+class USimpleWeaponManagerComponent;
 
 UCLASS(BlueprintType, Blueprintable, meta=(BlueprintSpawnableComponent))
 class SIMPLEFPSFEATUREKIT_API USimplePlayerItemInterComponent : public USimpleItemInterComponent
@@ -60,9 +63,17 @@ public:
 	//@TODO:在找到最近物体后需要材质边缘高亮
 	void CheckItemAroundPlayer();
 
+public:
+	//武器第一步
+	void PickupNewWeapon(ASimpleItemActorWeapon* InNewWeapon, bool bForceInHand);
+
+	USimpleWeaponManagerComponent* GetWeaponManager() const;
+
 protected:
+	//开始交互
 	virtual void
 	OnSelectingItemTriggerStart_Implementation(ASimpleItemActorBase* InSelectingItem, bool bForceInHand) override;
+	//停止交互
 	virtual void
 	OnInteractingItemTriggerEnd_Implementation(ASimpleItemActorBase* InInteractingItem, bool bIsPutPack) override;
 };

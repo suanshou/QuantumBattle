@@ -14,12 +14,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6c5b2485-86b2-4d58-832e-f328826246ed" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.QuantumBattle/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.QuantumBattle/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/GameFeatures/SimpleFPSCore/Content/SimpleFPSCore.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/GameFeatures/SimpleFPSCore/Content/SimpleFPSCore.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Inventory/SimpleItemActorInventory.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Inventory/SimpleItemActorInventory.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Weapons/SimpleItemActorWeapon.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Actor/Item/Pickable/Weapons/SimpleItemActorWeapon.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Components/SimplePlayerItemInterComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Components/SimplePlayerItemInterComponent.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Components/SimpleWeaponManagerComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Private/Components/SimpleWeaponManagerComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Inventory/SimpleItemActorInventory.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Inventory/SimpleItemActorInventory.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Core/SimpleItemActorBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Core/SimpleItemActorBase.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Weapons/SimpleItemActorWeapon.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Actor/Item/Pickable/Weapons/SimpleItemActorWeapon.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Components/SimpleItemInterComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Components/SimpleItemInterComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Components/SimplePlayerItemInterComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Components/SimplePlayerItemInterComponent.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Components/SimpleWeaponManagerComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/SimpleFPSFeatureKit/Source/SimpleFPSFeatureKit/Public/Components/SimpleWeaponManagerComponent.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,6 +180,7 @@
       <workItem from="1772507393069" duration="12486000" />
       <workItem from="1772591333491" duration="10000" />
       <workItem from="1772591371437" duration="14869000" />
+      <workItem from="1772677494120" duration="14268000" />
     </task>
     <servers />
   </component>
