@@ -15,8 +15,11 @@ class SIMPLEFPSFEATUREKIT_API USimpleItemInterComponent : public UActorComponent
 	GENERATED_BODY()
 
 protected:
+	//TWeakObjectPtr，弱引用，不阻止GC，自动置空
+	//被选中的物体
 	UPROPERTY(BlueprintReadOnly, Category="Config")
 	TWeakObjectPtr<ASimpleItemActorBase> SelectingItem;
+	//正在交互的物体
 	UPROPERTY(ReplicatedUsing="OnRep_InteractingItem", BlueprintReadOnly, Category="Config")
 	TWeakObjectPtr<ASimpleItemActorBase> InteractingItem;
 
@@ -68,6 +71,7 @@ protected:
 	//第三步
 	//服务器执行
 	//开始和结束交互
+	//在子类进行重写
 	UFUNCTION(BlueprintNativeEvent, Category="ItemInteractionComponent")
 	void OnSelectingItemTriggerStart(ASimpleItemActorBase* InSelectingItem, bool bForceInHand);
 	UFUNCTION(BlueprintNativeEvent, Category="ItemInteractionComponent")

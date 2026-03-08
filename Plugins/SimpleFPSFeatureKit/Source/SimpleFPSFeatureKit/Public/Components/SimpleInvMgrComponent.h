@@ -28,10 +28,11 @@ inline bool operator==(const FSimpleItemInventoryEntry& SourceEntry, const FSimp
 }
 
 //FFastArraySerializer提供了增量同步的机制
+//需要提供导出宏
 USTRUCT(BlueprintType)
-struct FSimpleItemInventoryList : public FFastArraySerializer
+struct SIMPLEFPSFEATUREKIT_API FSimpleItemInventoryList : public FFastArraySerializer
 {
-	GENERATED_USTRUCT_BODY()
+	GENERATED_BODY()
 
 public:
 	//下面都是网络同步，真正的操作在这边
@@ -72,13 +73,13 @@ private:
 template <>
 struct TStructOpsTypeTraits<FSimpleItemInventoryList> : public TStructOpsTypeTraitsBase2<FSimpleItemInventoryList>
 {
-	enum { WithNetDeltaSerializer = true, };
+	enum { WithNetDeltaSerializer = true };
 };
 
-UCLASS(ClassGroup=(Custom), BlueprintType, Blueprintable, meta=(BlueprintSpawnableComponent))
-class SIMPLEFPSFEATUREKIT_API USimpleInvMgrComponent : public UActorComponent
+UCLASS(ClassGroup="Custom", BlueprintType, Blueprintable, meta=(BlueprintSpawnableComponent))
+class USimpleInvMgrComponent : public UActorComponent
 {
-	GENERATED_BODY()
+	GENERATED_UCLASS_BODY()
 
 public:
 	USimplePlayerItemInterComponent* GetItemInteractionComponent();
@@ -110,7 +111,8 @@ public:
 
 	//丢弃物品
 	UFUNCTION(BlueprintCallable, Category="Inventory Manager Component")
-	void DiscardItemFromInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition, const int32& ItemCounts);
+	void DiscardItemFromInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
+	                              const int32& ItemCounts);
 
 	//取出物品
 	UFUNCTION(BlueprintCallable, Category="Inventory Manager Component")
@@ -132,8 +134,7 @@ private:
 
 public:
 	// Sets default values for this component's properties
-	USimpleInvMgrComponent();
-
+	//USimpleInvMgrComponent(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 protected:

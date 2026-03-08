@@ -35,6 +35,8 @@ ASimpleItemActorWeapon::ASimpleItemActorWeapon()
 	//碰撞预设
 	WeaponMesh->SetCollisionProfileName(FName(TEXT("ItemPickable")));
 	WeaponMesh->SetIsReplicated(true);
+
+	WeaponInstanceClass = USimpleWeaponInstance::StaticClass();
 };
 
 // Called when the game starts or when spawned
@@ -79,16 +81,21 @@ void ASimpleItemActorWeapon::OnStartTrigger_Implementation(USimpleItemInterCompo
 
 	if (USimpleWeaponManagerComponent* WeaponManager = GetWeaponManager(ItemInterComponent))
 	{
-		if (bForceInHand)
+		//添加武器
+		if (WeaponManager->AddWeapon(this))
 		{
-			ASimpleItemActorBase::OnStartTrigger(ItemInterComponent, bForceInHand);
-			WeaponManager->EquipWeapon((int32)WeaponInstance->GetWeaponSlot());
-			EquipToHand();
-		}
-		else
-		{
-			ASimpleItemActorBase::OnStartTrigger(ItemInterComponent, bForceInHand);
-			EquipToSlot();
+			//是否显示在手上
+			if (bForceInHand)
+			{
+				ASimpleItemActorBase::OnStartTrigger(ItemInterComponent, bForceInHand);
+				WeaponManager->EquipWeapon((int32)WeaponInstance->GetWeaponSlot());
+				EquipToHand();
+			}
+			else
+			{
+				ASimpleItemActorBase::OnStartTrigger(ItemInterComponent, bForceInHand);
+				EquipToSlot();
+			}
 		}
 	}
 }
@@ -101,8 +108,11 @@ void ASimpleItemActorWeapon::OnEndTrigger_Implementation(USimpleItemInterCompone
 	{
 		if (USimpleWeaponManagerComponent* WeaponManager = GetWeaponManager(ItemInterComponent))
 		{
+			//是否放回背包
 			if (bIsPutPack)
 			{
+				//通过模拟拾取的逻辑放回到背包
+				//在UnequipWeapon触发的逻辑内部可以清除GAS
 				if (WeaponManager->GetWeaponInSlot(WeaponManager->GetEquipSlot()) == this && WeaponManager->
 					UnequipWeapon())
 				{
@@ -110,8 +120,10 @@ void ASimpleItemActorWeapon::OnEndTrigger_Implementation(USimpleItemInterCompone
 				}
 				else
 				{
+					//移除武器
 					if (WeaponManager->RemoveWeapon((int32)WeaponInstance->GetWeaponSlot()))
 					{
+						//把武器丢在地上
 						ThrowItem(ItemInterComponent, WeaponMesh, false);
 						Super::OnEndTrigger_Implementation(ItemInterComponent, bIsPutPack);
 					}
@@ -150,11 +162,13 @@ void ASimpleItemActorWeapon::EquipToHand()
 			{
 				if (ItemDefinition)
 				{
+					//拾取
 					PickupItem(InteractingComponent.Get(), CharacterMesh);
 
-					AttachToComponent(CharacterMesh,
-					                  FAttachmentTransformRules::SnapToTargetNotIncludingScale,
-					                  ItemDefinition.GetDefaultObject()->ItemSlotName);
+					//附加到组件上
+					 AttachToComponent(CharacterMesh,
+					                   FAttachmentTransformRules::SnapToTargetNotIncludingScale,
+					                   ItemDefinition.GetDefaultObject()->ItemSlotName);
 					SetActorRelativeTransform(ItemDefinition.GetDefaultObject()->ItemRelativeTransform);
 				}
 			}

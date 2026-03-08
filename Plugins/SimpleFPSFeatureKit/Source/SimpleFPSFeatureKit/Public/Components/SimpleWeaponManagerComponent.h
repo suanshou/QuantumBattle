@@ -44,10 +44,12 @@ public:
 
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category="Weapon Manager Component")
 	bool RemoveWeapon(int32 InRemoveSlot);
-	
+
+	//装备武器
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category="Weapon Manager Component")
 	bool EquipWeapon(int32 InSlot);
 
+	//卸载武器
 	UFUNCTION(BlueprintCallable, BlueprintAuthorityOnly, Category="Weapon Manager Component")
 	bool UnequipWeapon();
 

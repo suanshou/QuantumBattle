@@ -46,6 +46,7 @@ protected:
 	//激活
 	//开始和结束交互的响应事件
 	//BlueprintNativeEvent，不清楚用户用的是蓝图函数还是C++
+	//在子类对这个逻辑做重写
 	UFUNCTION(BlueprintNativeEvent, Category="ItemActorBase")
 	void OnStartTrigger(USimpleItemInterComponent* ItemInterComponent, bool bForceInHand);
 	

@@ -29,10 +29,12 @@ public:
 	USimpleItemPickableDefinition* GetItemDefinition() const;
 
 protected:
+	//在子类还可以做重写
 	virtual void OnStartTrigger_Implementation(USimpleItemInterComponent* ItemInterComponent, bool bForceInHand) override;
 	virtual void OnEndTrigger_Implementation(USimpleItemInterComponent* ItemInterComponent, bool bIsPutPack) override;
 
 protected:
+	//拾取和丢弃
 	UFUNCTION(BlueprintNativeEvent,BlueprintCallable,Category="Pickable")
 	void PickupItem(USimpleItemInterComponent* ItemInterComponent,UPrimitiveComponent* InItemMesh);
 

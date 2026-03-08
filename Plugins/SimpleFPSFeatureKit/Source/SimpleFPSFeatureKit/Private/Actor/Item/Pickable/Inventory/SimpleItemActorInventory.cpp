@@ -70,10 +70,12 @@ void ASimpleItemActorInventory::OnStartTrigger_Implementation(USimpleItemInterCo
 void ASimpleItemActorInventory::OnEndTrigger_Implementation(USimpleItemInterComponent* ItemInterComponent,
                                                             bool bIsPutPack)
 {
+	//是否完全移除
 	if (bIsPutPack)
 	{
 		check(PickUpItemToInventory() == ItemCounts)
 
+		//执行清除逻辑
 		Destroy();
 	}
 	else

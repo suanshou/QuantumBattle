@@ -169,6 +169,7 @@ void USimplePlayerItemInterComponent::PickupNewWeapon(ASimpleItemActorWeapon* In
 			}
 		}
 
+		//做替换或者装备
 		if (InteractingItem.IsValid())
 		{
 			if (bForceInHand)
@@ -216,16 +217,19 @@ void USimplePlayerItemInterComponent::OnSelectingItemTriggerStart_Implementation
 	//手里有东西
 	if (InteractingItem == nullptr)
 	{
-		if (InSelectingItem->GetItemType() == ESimpleKitItemType::ITEM_SCENEINTERACTIVE)
+		//如果是物品类
+		if (InSelectingItem->GetItemType() == ESimpleKitItemType::ITEM_PICKABLE)
 		{
 			if (ASimpleItemActorPickable* PickableItem = Cast<ASimpleItemActorPickable>(InSelectingItem))
 			{
 				switch (PickableItem->GetPickableType())
 				{
+					//如果是库存物
 				case ESimpleKitItemPickableType::ITEM_INVENTORY:
 					{
 						if (InSelectingItem->StartTrigger(this, bForceInHand))
 						{
+							//拿到手上
 							if (bForceInHand)
 							{
 								//强制和手上的东西，比如武器做了交换
@@ -234,6 +238,7 @@ void USimplePlayerItemInterComponent::OnSelectingItemTriggerStart_Implementation
 						}
 						break;
 					}
+					//如果是武器
 				case ESimpleKitItemPickableType::ITEM_WEAPON:
 					{
 						if (ASimpleItemActorWeapon* WeaponItem = Cast<ASimpleItemActorWeapon>(PickableItem))
@@ -253,8 +258,25 @@ void USimplePlayerItemInterComponent::OnSelectingItemTriggerStart_Implementation
 				}
 			}
 		}
-		else if (InSelectingItem->GetItemType() == ESimpleKitItemType::ITEM_PICKABLE)
+		//如果是场景交互物品
+		else if (InSelectingItem->GetItemType() == ESimpleKitItemType::ITEM_SCENEINTERACTIVE)
 		{
+			//防止一次交互两个场景交互物品，比如同时开门和开灯
+			if (InteractingItem->GetItemType() == ESimpleKitItemType::ITEM_SCENEINTERACTIVE)
+			{
+				return;
+			}
+			else if (InteractingItem->EndTrigger(this, true) && InSelectingItem->StartTrigger(this))
+			{
+				InteractingItem = InSelectingItem;
+			}
+			else
+			{
+				UE_LOG(LogTemp, Error,
+					   TEXT(
+						   "[USimplePlayerItemInterComponent::OnSelectingItemTriggerStart_Implementation]触发\'SceneInteractive\'TPItem错误啦>w<"
+					   ))
+			}
 		}
 	}
 	//手里没东西
@@ -262,6 +284,7 @@ void USimplePlayerItemInterComponent::OnSelectingItemTriggerStart_Implementation
 	{
 		switch (InSelectingItem->GetItemType())
 		{
+			//场景交互物品
 		case ESimpleKitItemType::ITEM_SCENEINTERACTIVE:
 			{
 				//防止一次交互两个场景交互物品，比如同时开门和开灯
@@ -281,12 +304,14 @@ void USimplePlayerItemInterComponent::OnSelectingItemTriggerStart_Implementation
 					       ))
 				}
 			}
+			//拾取物
 		case ESimpleKitItemType::ITEM_PICKABLE:
 			{
 				if (ASimpleItemActorPickable* PickableItem = Cast<ASimpleItemActorPickable>(InSelectingItem))
 				{
 					switch (PickableItem->GetPickableType())
 					{
+						//武器
 					case ESimpleKitItemPickableType::ITEM_WEAPON:
 						{
 							if (ASimpleItemActorWeapon* WeaponItem = Cast<ASimpleItemActorWeapon>(PickableItem))
@@ -295,6 +320,7 @@ void USimplePlayerItemInterComponent::OnSelectingItemTriggerStart_Implementation
 							}
 							break;
 						}
+						//库存
 					case ESimpleKitItemPickableType::ITEM_INVENTORY:
 						{
 							if (ASimpleItemActorInventory* InventoryItem = Cast
@@ -318,6 +344,7 @@ void USimplePlayerItemInterComponent::OnSelectingItemTriggerStart_Implementation
 										InventoryItem->StartTrigger(this, false);
 									}
 									//上一个释放掉，这一个做新的触发
+									//对物品做添加并删除原来的实例
 									else if (InteractingItem->EndTrigger(this, true) &&
 										InventoryItem->StartTrigger(this, true))
 									{

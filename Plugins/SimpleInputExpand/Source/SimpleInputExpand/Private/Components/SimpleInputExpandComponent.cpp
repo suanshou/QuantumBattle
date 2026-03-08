@@ -70,14 +70,14 @@ void USimpleInputExpandComponent::SetupPlayerInputComponent(UInputComponent* Pla
 						InEvent,
 						InGameplayTag);
 				};
-				
-				for (const auto& TmpAction:InputConfig->InputActions)
+
+				for (const auto& TmpAction : InputConfig->InputActions)
 				{
-					InBindFunc(ETriggerEvent::Triggered,TmpAction.InputAction,TmpAction.InputTag);
-					InBindFunc(ETriggerEvent::Started,TmpAction.InputAction,TmpAction.InputTag);
-					InBindFunc(ETriggerEvent::Ongoing,TmpAction.InputAction,TmpAction.InputTag);
-					InBindFunc(ETriggerEvent::Canceled,TmpAction.InputAction,TmpAction.InputTag);
-					InBindFunc(ETriggerEvent::Completed,TmpAction.InputAction,TmpAction.InputTag);
+					InBindFunc(ETriggerEvent::Triggered, TmpAction.InputAction, TmpAction.InputTag);
+					InBindFunc(ETriggerEvent::Started, TmpAction.InputAction, TmpAction.InputTag);
+					InBindFunc(ETriggerEvent::Ongoing, TmpAction.InputAction, TmpAction.InputTag);
+					InBindFunc(ETriggerEvent::Canceled, TmpAction.InputAction, TmpAction.InputTag);
+					InBindFunc(ETriggerEvent::Completed, TmpAction.InputAction, TmpAction.InputTag);
 				}
 			}
 		}
@@ -90,8 +90,8 @@ void USimpleInputExpandComponent::RegisterMappingContext()
 	{
 		if (APlayerController* PlayerController = Cast<APlayerController>(InCharacter->GetController()))
 		{
-			if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<
-				UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
+			if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem
+				<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
 			{
 				Subsystem->AddMappingContext(DefaultMappingContext, 0);
 			}

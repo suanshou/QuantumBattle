@@ -41,6 +41,7 @@ void ASimpleItemActorBase::OnStartTrigger_Implementation(USimpleItemInterCompone
 
 void ASimpleItemActorBase::OnEndTrigger_Implementation(USimpleItemInterComponent* ItemInterComponent, bool bIsPutPack)
 {
+	//清除数量
 	InteractingComponent.Reset();
 }
 

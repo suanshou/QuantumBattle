@@ -175,4 +175,6 @@ void USimpleWeaponInstance::ComputeHeatRange(float& MinHeat, float& MaxHeat)
 
 USimpleWeaponInstance::USimpleWeaponInstance()
 {
+	//@TODO：后续需要删除，自己指认
+	WeaponSlot = ESimpleWeaponSlot::WS_SMG;
 }

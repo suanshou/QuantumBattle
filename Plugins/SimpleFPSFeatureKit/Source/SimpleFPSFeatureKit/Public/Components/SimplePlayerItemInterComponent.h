@@ -55,8 +55,8 @@ public:
 	                           FActorComponentTickFunction* ThisTickFunction) override;
 
 public:
+	//拾取和丢弃
 	virtual void Trigger(const FInputActionValue& Value);
-	//@TODO:丢掉的输入需要按下启动，松开丢出，同时需要取消的逻辑
 	virtual void Throw(const FInputActionValue& Value);
 
 public:
@@ -64,13 +64,14 @@ public:
 	void CheckItemAroundPlayer();
 
 public:
-	//武器第一步
+	//识别到交互物是武器的时候拾取武器
 	void PickupNewWeapon(ASimpleItemActorWeapon* InNewWeapon, bool bForceInHand);
 
 	USimpleWeaponManagerComponent* GetWeaponManager() const;
 
 protected:
 	//开始交互
+	//对交互物品做分类，分开做交互逻辑
 	virtual void
 	OnSelectingItemTriggerStart_Implementation(ASimpleItemActorBase* InSelectingItem, bool bForceInHand) override;
 	//停止交互

@@ -21,7 +21,8 @@ void ASimpleItemActorPickable::OnStartTrigger_Implementation(USimpleItemInterCom
 	Super::OnStartTrigger_Implementation(ItemInterComponent, bForceInHand);
 
 	USkeletalMeshComponent* CharacterMesh = nullptr;
-	if (ISimpleItemInteractionInterface* ItemInterface = Cast<ISimpleItemInteractionInterface>(ItemInterComponent->GetOwner()))
+	if (ISimpleItemInteractionInterface* ItemInterface = Cast<ISimpleItemInteractionInterface>(
+		ItemInterComponent->GetOwner()))
 	{
 		//接口必须使用Execute，这样才能知道是蓝图还是C++使用
 		CharacterMesh = ItemInterface->Execute_GetCharacterMesh(ItemInterComponent->GetOwner());
@@ -43,6 +44,7 @@ void ASimpleItemActorPickable::OnStartTrigger_Implementation(USimpleItemInterCom
 			ItemInterComponent->PlayMontageNetMulticast(ItemDefinition.GetDefaultObject()->StartTriggerAnimMontage);
 		}
 
+		//附加到组件，并设置相对位置
 		AttachToComponent(
 			CharacterMesh,
 			FAttachmentTransformRules::SnapToTargetNotIncludingScale,
@@ -56,6 +58,18 @@ void ASimpleItemActorPickable::OnEndTrigger_Implementation(USimpleItemInterCompo
                                                            bool bIsPutPack)
 {
 	Super::OnEndTrigger_Implementation(ItemInterComponent, bIsPutPack);
+
+	//取消吸附
+	DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+
+	//不收到背包时播放动画
+	if (!bIsPutPack)
+	{
+		if (ItemDefinition && ItemDefinition.GetDefaultObject()->EndTriggerAnimMontage)
+		{
+			InteractingComponent->PlayMontageNetMulticast(ItemDefinition.GetDefaultObject()->EndTriggerAnimMontage);
+		}
+	}
 }
 
 void ASimpleItemActorPickable::PickupItem_Implementation(USimpleItemInterComponent* ItemInterComponent,
@@ -107,6 +121,8 @@ ASimpleItemActorPickable::ASimpleItemActorPickable()
 
 	ItemType = ESimpleKitItemType::ITEM_PICKABLE;
 	PickableType = ESimpleKitItemPickableType::ITEM_NORMAL;
+
+	ItemDefinition = USimpleItemPickableDefinition::StaticClass();
 }
 
 // Called when the game starts or when spawned

@@ -168,7 +168,7 @@ bool USimpleInvMgrComponent::GetItemEntry(TSubclassOf<USimpleItemPickableDefinit
                                           FSimpleItemInventoryEntry& TargetEntry)
 {
 	TargetEntry = FSimpleItemInventoryEntry();
-
+	
 	if (FSimpleItemInventoryEntry* ItemEntry = InventoryList.GetEntry(ItemDefinition))
 	{
 		TargetEntry = *ItemEntry;
@@ -181,6 +181,7 @@ bool USimpleInvMgrComponent::GetItemEntry(TSubclassOf<USimpleItemPickableDefinit
 bool USimpleInvMgrComponent::IsAddItemToInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition)
 {
 	FSimpleItemInventoryEntry* TempEntry = nullptr;
+	
 	return InventoryList.IsAddEntry(ItemDefinition, TempEntry);
 }
 
@@ -188,6 +189,7 @@ bool USimpleInvMgrComponent::IsRemoveFromInventory(const TSubclassOf<USimpleItem
                                                    const int32& ItemCounts)
 {
 	FSimpleItemInventoryEntry* TempEntry = nullptr;
+
 	return InventoryList.IsRemoveEntry(ItemDefinition, ItemCounts, TempEntry);
 }
 
@@ -204,7 +206,8 @@ int32 USimpleInvMgrComponent::RemoveItemFromInventory(const TSubclassOf<USimpleI
 {
 	check(GetOwner() && GetOwner()->HasAuthority())
 
-	return InventoryList.RemoveEntry(ItemDefinition, ItemCounts);
+	//return InventoryList.RemoveEntry(ItemDefinition, ItemCounts);
+	return false;
 }
 
 void USimpleInvMgrComponent::DiscardItemFromInventory(const TSubclassOf<USimpleItemPickableDefinition>& ItemDefinition,
@@ -290,7 +293,8 @@ void USimpleInvMgrComponent::TakeOutItemFromInventoryOnServer_Implementation(
 }
 
 // Sets default values for this component's properties
-USimpleInvMgrComponent::USimpleInvMgrComponent()
+USimpleInvMgrComponent::USimpleInvMgrComponent(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
@@ -303,7 +307,7 @@ USimpleInvMgrComponent::USimpleInvMgrComponent()
 void USimpleInvMgrComponent::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-
+	
 	DOREPLIFETIME(ThisClass, InventoryList);
 }
 

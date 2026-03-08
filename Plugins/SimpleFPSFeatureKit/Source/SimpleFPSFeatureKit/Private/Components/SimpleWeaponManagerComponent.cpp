@@ -172,6 +172,7 @@ void USimpleWeaponManagerComponent::OnWeaponEquipped(ASimpleItemActorWeapon* Equ
 				{
 					if (UAbilitySystemComponent* ASC = InAbilityInterface->GetAbilitySystemComponent())
 					{
+						//迭代对应的能力数组
 						for (const FSimpleWeaponBindingAbility& TmpAbility : EquippingWeapon->GetWeaponInstance()->
 						     GetWeaponBindingAbilities())
 						{
@@ -244,6 +245,7 @@ void USimpleWeaponManagerComponent::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
+	InitWeaponManager(3);
 }
 
 
