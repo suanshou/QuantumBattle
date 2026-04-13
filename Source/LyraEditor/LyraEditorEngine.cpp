@@ -35,7 +35,7 @@ void ULyraEditorEngine::Start()
 void ULyraEditorEngine::Tick(float DeltaSeconds, bool bIdleMode)
 {
 	Super::Tick(DeltaSeconds, bIdleMode);
-	
+
 	FirstTickSetup();
 }
 
@@ -49,11 +49,15 @@ void ULyraEditorEngine::FirstTickSetup()
 	bFirstTickSetup = true;
 
 	// Force show plugin content on load.
+	//插件内容强制打开，方便使用GameFeature插件
 	GetMutableDefault<UContentBrowserSettings>()->SetDisplayPluginFolders(true);
-
 }
 
-FGameInstancePIEResult ULyraEditorEngine::PreCreatePIEInstances(const bool bAnyBlueprintErrors, const bool bStartInSpectatorMode, const float PIEStartTime, const bool bSupportsOnlinePIE, int32& InNumOnlinePIEInstances)
+FGameInstancePIEResult ULyraEditorEngine::PreCreatePIEInstances(const bool bAnyBlueprintErrors,
+                                                                const bool bStartInSpectatorMode,
+                                                                const float PIEStartTime,
+                                                                const bool bSupportsOnlinePIE,
+                                                                int32& InNumOnlinePIEInstances)
 {
 	if (const ALyraWorldSettings* LyraWorldSettings = Cast<ALyraWorldSettings>(EditorWorld->GetWorldSettings()))
 	{
@@ -65,7 +69,8 @@ FGameInstancePIEResult ULyraEditorEngine::PreCreatePIEInstances(const bool bAnyB
 			{
 				PlaySessionRequest->EditorPlaySettings->SetPlayNetMode(PIE_Standalone);
 
-				FNotificationInfo Info(LOCTEXT("ForcingStandaloneForFrontend", "Forcing NetMode: Standalone for the Frontend"));
+				FNotificationInfo Info(LOCTEXT("ForcingStandaloneForFrontend",
+				                               "Forcing NetMode: Standalone for the Frontend"));
 				Info.ExpireDuration = 2.0f;
 				FSlateNotificationManager::Get().AddNotification(Info);
 			}
@@ -77,7 +82,9 @@ FGameInstancePIEResult ULyraEditorEngine::PreCreatePIEInstances(const bool bAnyB
 	GetDefault<ULyraPlatformEmulationSettings>()->OnPlayInEditorStarted();
 
 	//
-	FGameInstancePIEResult Result = Super::PreCreatePIEServerInstance(bAnyBlueprintErrors, bStartInSpectatorMode, PIEStartTime, bSupportsOnlinePIE, InNumOnlinePIEInstances);
+	FGameInstancePIEResult Result = Super::PreCreatePIEServerInstance(bAnyBlueprintErrors, bStartInSpectatorMode,
+	                                                                  PIEStartTime, bSupportsOnlinePIE,
+	                                                                  InNumOnlinePIEInstances);
 
 	return Result;
 }

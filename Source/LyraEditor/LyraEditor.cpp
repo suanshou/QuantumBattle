@@ -23,10 +23,13 @@
 #include "UnrealEdGlobals.h"
 #include "Validation/EditorValidator.h"
 
+//Slate相关
 class SWidget;
 
+//定义命名空间方便编辑器工具开发
 #define LOCTEXT_NAMESPACE "LyraEditor"
 
+//定义日志类
 DEFINE_LOG_CATEGORY(LogLyraEditor);
 
 // This function tells the GameplayCue editor what classes to expose when creating new notifies.
